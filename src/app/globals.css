@@ -16,14 +16,20 @@
   }
 }
 
+html,
 body {
+  height: 100%;
+  /* Ensure the body and HTML take up the full viewport height */
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  /* Prevent horizontal scrolling */
+  overscroll-behavior: none;
+  /* Prevent scrolling past top/bottom */
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
 @layer utilities {
