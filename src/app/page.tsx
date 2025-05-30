@@ -1,44 +1,61 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import Image from 'next/image';
 import Layout from '../components/Layout';
 import Footer from '../components/Footer';
+import bgHero from '../images/bg-hero.jpg';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Home = () => {
   return (
     <Layout>
-      <div className="flex flex-col min-h-screen bg-gradient-to-r from-blue-500 to-indigo-600 text-white">
-        <header className="flex-grow flex flex-col items-center justify-center text-center pt-32 md:pt-48 lg:pt-64">
-          <h1 className="text-5xl font-bold mb-4">
-            Designing Success, One Website at a Time
-          </h1>
-          <p className="mt-4 text-lg max-w-2xl">
-            Transform your business today with a website that connects and converts. Partner with us to create a powerful online presence that drives real results.
-          </p>
-          <a
-            href="/pricing"
-            className="mt-8 inline-block px-8 py-4 bg-yellow-500 text-gray-900 font-semibold rounded-full shadow-lg hover:bg-yellow-400 transition-transform transform hover:scale-105"
-          >
-            Get Started
-          </a>
+      <div className="flex flex-col min-h-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white">
+        {/* Hero Section */}
+        <header className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden">
+          <Image
+            src={bgHero}
+            alt="Hero Background"
+            fill
+            priority
+            style={{ objectFit: 'cover' }}
+            className="z-0"
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-60 backdrop-blur-sm z-10" />
+          <div className="relative z-20 max-w-4xl mx-auto">
+            <h1 className="text-5xl font-bold mb-4">Designing Success, One Website at a Time</h1>
+            <p className="mt-4 text-lg max-w-2xl mx-auto">
+              Transform your business today with a website that connects and converts. Partner with us to create a powerful online presence that drives real results.
+            </p>
+            <a
+              href="/pricing"
+              className="mt-8 inline-block px-8 py-4 bg-yellow-500 text-gray-900 font-semibold rounded-full shadow-lg hover:bg-yellow-400 transition-transform transform hover:scale-105"
+            >
+              Get Started
+            </a>
+          </div>
         </header>
 
-        <section className="w-full max-w-5xl mx-auto mt-20 mb-10">
-          <h2 className="text-3xl font-semibold text-center mb-10">
-            What Our Clients Say
-          </h2>
-          <TestimonialSlideshow />
-        </section>
+        {/* Main Content */}
+        <main className="flex flex-col flex-grow">
+          {/* Testimonials Section */}
+          <section className="w-full bg-[#0f172a] py-20 relative overflow-hidden">
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <h2 className="text-3xl font-semibold text-center mb-12 text-white">What Our Clients Say</h2>
+              <TestimonialSlideshow />
+            </div>
+          </section>
 
-        <section id="faq-section" className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white flex-grow py-20">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-semibold text-center mb-10">
-              Frequently Asked Questions
-            </h2>
-            <FaqAccordion />
-          </div>
-        </section>
+          {/* FAQ Section */}
+          <section id="faq-section" className="w-full pt-20 pb-4">
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+              <h2 className="text-3xl font-semibold text-center mb-10">Frequently Asked Questions</h2>
+              <FaqAccordion />
+            </div>
+          </section>
+        </main>
 
+        {/* Footer */}
         <Footer />
       </div>
     </Layout>
@@ -48,87 +65,97 @@ const Home = () => {
 const TestimonialSlideshow = () => {
   const testimonials = [
     {
-      quote: "Stunning design, flawless functionality, and perfectly aligned with our brand. The toughest part? Deciding between their exceptional options!",
-      name: "- Common Options",
+      quote: 'Stunning design, flawless functionality, and perfectly aligned with our brand. The toughest part? Deciding between their exceptional options!',
+      name: '- Common Options LLC',
     },
     {
-      quote: "They delivered a beautiful, functional website that boosted our customer engagement. Their expertise and commitment made all the difference. Highly recommend!",
-      name: "- Sofysam Fortune Enterprises",
+      quote: 'They delivered a beautiful, functional website that boosted our customer engagement. Their expertise and commitment made all the difference. Highly recommend!',
+      name: '- Sofysam Fortune Enterprises',
+    },
+    {
+      quote: "Our new website is a game changer. Clients find us easier, the design is clean, and we've seen a real increase in inquiries. Seamless experience from start to finish!",
+      name: '- Care Axis Management',
     },
   ];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [index, setIndex] = useState(0);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-    }, 5000); // Change slide every 5 seconds
-
-    return () => clearInterval(interval);
-  }, [testimonials.length]);
+  const prevSlide = () => setIndex(index === 0 ? testimonials.length - 1 : index - 1);
+  const nextSlide = () => setIndex(index === testimonials.length - 1 ? 0 : index + 1);
 
   return (
-    <div className="relative w-full overflow-hidden">
-      <div
-        className="flex transition-transform duration-1000 ease-in-out"
-        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+    <div className="relative w-full max-w-5xl mx-auto flex items-center justify-center">
+      <button
+        onClick={prevSlide}
+        className="absolute left-2 sm:left-6 top-1/2 transform -translate-y-1/2 z-20 bg-black/50 p-2 sm:p-3 rounded-full text-white hover:bg-black/70 transition"
       >
-        {testimonials.map((testimonial, index) => (
-          <div
-            key={index}
-            className="flex-shrink-0 w-full flex justify-center items-center"
-          >
-            <Testimonial quote={testimonial.quote} name={testimonial.name} />
-          </div>
-        ))}
+        <ChevronLeft className="w-6 h-6 sm:w-8 sm:h-8" />
+      </button>
+
+      <div className="flex justify-center w-full px-4 sm:px-6 lg:px-12">
+        <div className="w-full max-w-2xl">
+          <Testimonial quote={testimonials[index].quote} name={testimonials[index].name} />
+        </div>
       </div>
+
+      <button
+        onClick={nextSlide}
+        className="absolute right-2 sm:right-6 top-1/2 transform -translate-y-1/2 z-20 bg-black/50 p-2 sm:p-3 rounded-full text-white hover:bg-black/70 transition"
+      >
+        <ChevronRight className="w-6 h-6 sm:w-8 sm:h-8" />
+      </button>
     </div>
   );
 };
 
 const Testimonial = ({ quote, name }: { quote: string; name: string }) => (
-  <div className="bg-white p-6 sm:p-8 lg:p-10 rounded-lg shadow-lg text-center flex flex-col justify-center w-72 sm:w-96 md:w-[28rem] lg:w-[36rem] xl:w-[44rem]">
-    <p className="text-gray-700 text-base sm:text-lg lg:text-xl mb-4">"{quote}"</p>
-    <p className="text-gray-900 font-semibold text-sm sm:text-base lg:text-lg">{name}</p>
+  <div className="bg-white p-6 sm:p-8 lg:p-10 rounded-2xl shadow-2xl text-center flex flex-col justify-center items-center w-full h-72 border border-blue-300">
+    <p className="text-base sm:text-lg lg:text-xl mb-4 max-w-xs sm:max-w-sm md:max-w-md text-gray-900 italic text-center">"{quote}"</p>
+    <p className="font-semibold text-sm sm:text-base lg:text-lg text-gray-900">{name}</p>
   </div>
 );
 
 const FaqAccordion = () => {
   const faqs = [
     {
-      question: "How do you build the websites?",
+      question: 'Is there a down payment required?',
+      answer: "Yes, we typically collect a down payment before starting any project. It's generally half of the cost—whether you're choosing the one-time payment plan or the subscription setup fee. This ensures commitment from both sides and helps us begin the work with clarity and confidence.",
+    },
+    {
+      question: 'How do you build the websites?',
       answer: "We used to code websites from scratch, but we’re now transitioning to Squarespace to deliver faster results and a more user-friendly experience while maintaining our high design standards.",
     },
     {
-      question: "How does the one-time payment plan work?",
-      answer: "Our one-time payment plan is a $1400 flat fee with no hidden costs. This covers the design and building of your website, SEO, copywriting, and a custom domain. It includes one revision, but no monthly maintenance or hosting. Once the website is built, you’ll have full access and control over it on Squarespace. You’ll be responsible for paying for hosting, domains, and any other services, as well as maintaining the website going forward.",
+      question: 'How does the one-time payment plan work?',
+      answer: 'Our one-time payment plan is now $699 (originally $1400). This covers the design and building of your website, SEO, copywriting, and up to 4 pages. It includes one revision, but no monthly maintenance or hosting. You’ll be responsible for hosting, domain, and future updates.',
     },
     {
-      question: "How does the subscription plan work?",
-      answer: "The subscription plan involves a one-time $850 setup fee to build your website, followed by a $120/month charge. This includes monthly maintenance, hosting, and two revisions per month. You’ll be charged $120/month for at least six months. After that, you can choose to continue the subscription or cancel it. If you cancel, you’ll gain full access and control of your website, but the included features like maintenance, hosting, and revisions will be removed, and you’ll be responsible for managing and paying for your website’s hosting and other services on Squarespace.",
+      question: 'How does the subscription plan work?',
+      answer: 'The subscription plan is $129/month with a one-time setup fee of $699 (originally $850). It includes hosting, maintenance, copywriting, SEO, up to 4 pages, and 1 revision per month. After 6 months, you can cancel and take full control of your website on Squarespace, minus included services.',
     },
     {
-      question: "What services do you offer?",
-      answer: "We offer expert web design and development services, including custom website creation, SEO optimization, and more, all designed to elevate your business online.",
+      question: 'What services do you offer?',
+      answer: 'We offer expert web design and development services, including custom website creation, SEO optimization, and more, all designed to elevate your business online.',
     },
     {
-      question: "How long does it take to build a website?",
-      answer: "The timeline for building a website depends on the complexity of the project. A simple website can take a few days, while more complex projects can take several weeks or even months.",
+      question: 'How long does it take to build a website?',
+      answer: 'The timeline for building a website depends on the complexity of the project. A simple website can take a few weeks, while more complex projects can take several weeks or even months.',
     },
     {
-      question: "What is your pricing model?",
+      question: 'What is your pricing model?',
       answer: (
         <div>
-          We offer various pricing plans to suit different needs, including one-time payments, subscription models, and custom project quotes.
+          We offer one-time, subscription, and custom pricing models to fit your business needs. Visit our{' '}
           <a
             href="/pricing"
-            className="mt-4 inline-block px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition-colors duration-300 text-center w-full sm:w-auto"
+            className="text-blue-200 hover:text-white underline transition-colors duration-200"
           >
-            See Pricing
-          </a>
+            pricing page
+          </a>{' '}
+          to learn more.
         </div>
       ),
-    }
+    },
   ];
 
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -140,7 +167,10 @@ const FaqAccordion = () => {
   return (
     <div className="space-y-4">
       {faqs.map((faq, index) => (
-        <div key={index} className="bg-white text-gray-900 rounded-lg shadow-md border border-gray-300">
+        <div
+          key={index}
+          className="bg-white text-gray-900 rounded-lg shadow-md border border-gray-300"
+        >
           <button
             onClick={() => toggleAccordion(index)}
             className="w-full text-left px-6 py-4 font-semibold flex justify-between items-center focus:outline-none"
@@ -158,7 +188,7 @@ const FaqAccordion = () => {
           </button>
           {openIndex === index && (
             <div className="px-6 pb-4">
-              <p>{faq.answer}</p>
+              <div>{faq.answer}</div>
             </div>
           )}
         </div>
