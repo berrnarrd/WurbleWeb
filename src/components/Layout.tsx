@@ -1,7 +1,7 @@
 'use client';
 
 import React, { ReactNode } from 'react';
-import CTABanner from './Ctabanner';
+import CTABanner from './CTABanner';
 import Navbar from './Navbar';
 
 const Layout = ({ children }: { children: ReactNode }) => {
