@@ -123,15 +123,15 @@ const FaqAccordion = () => {
     },
     {
       question: 'How do you build the websites?',
-      answer: "We used to code websites from scratch, but we’re now transitioning to Squarespace to deliver faster results and a more user-friendly experience while maintaining our high design standards.",
+      answer: "Powered by Webflow, our websites combine performance, usability, and standout design.",
     },
     {
       question: 'How does the one-time payment plan work?',
-      answer: 'Our one-time payment plan is now $699 (originally $1400). This covers the design and building of your website, SEO, copywriting, and up to 4 pages. It includes one revision, but no monthly maintenance or hosting. You’ll be responsible for hosting, domain, and future updates.',
+      answer: 'Our one-time payment plan is now $899 (originally $1798). This covers the design and building of your website, SEO, copywriting, and up to 4 pages. It includes one revision, but no monthly maintenance or hosting. You’ll be responsible for hosting, domain, and future updates.',
     },
     {
       question: 'How does the subscription plan work?',
-      answer: 'The subscription plan is $129/month with a one-time setup fee of $699 (originally $850). It includes hosting, maintenance, copywriting, SEO, up to 4 pages, and 1 revision per month. After 6 months, you can cancel and take full control of your website on Squarespace, minus included services.',
+      answer: 'The subscription plan is $169/month with a one-time setup fee of $399 (originally $798). It includes hosting, maintenance, copywriting, SEO, up to 4 pages, and 1 revision per month. After 6 months, you can cancel and take full control of your website on Webflow, minus included services.',
     },
     {
       question: 'What services do you offer?',

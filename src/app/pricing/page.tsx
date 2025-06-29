@@ -17,7 +17,7 @@ const Pricing: React.FC = () => {
                     <section className="w-full max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
                         <PricingCard
                             title="One-Time Payment"
-                            price={<><span className="line-through text-gray-400 mr-2">$1400</span><span className="text-blue-600 font-bold">$699</span></>}
+                            price={<><span className="line-through text-gray-400 mr-2">$1798</span><span className="text-blue-600 font-bold">$899</span></>}
                             features={[
                                 { name: 'Up to 4 Pages', included: true },
                                 { name: '1 Revision', included: true },
@@ -31,7 +31,7 @@ const Pricing: React.FC = () => {
                         <div className="lg:scale-110">
                             <PricingCard
                                 title="Subscription"
-                                price={<span className="text-blue-600 font-bold">$129/month</span>}
+                                price={<span className="text-blue-600 font-bold">$169/month</span>}
                                 features={[
                                     { name: 'Up to 4 Pages', included: true },
                                     { name: '1 Revision/month', included: true },
@@ -42,7 +42,7 @@ const Pricing: React.FC = () => {
                                     { name: 'Copywriting', included: true },
                                 ]}
                                 popular
-                                setupFee={<><span className="line-through text-gray-400 mr-2">$850</span><span className="text-blue-600 font-bold">+$699</span> setup fee</>}
+                                setupFee={<><span className="line-through text-gray-400 mr-2">$798</span><span className="text-blue-600 font-bold">+$399</span> setup fee</>}
                             />
                         </div>
                         <PricingCard
