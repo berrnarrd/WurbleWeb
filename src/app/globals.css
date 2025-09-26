@@ -37,15 +37,21 @@ body {
   /* Animation for rightward infinite scroll */
   @keyframes scrollRight {
     0% {
-      transform: translateX(-50%);
+      transform: translateX(0%);
     }
 
     100% {
-      transform: translateX(0%);
+      transform: translateX(50%);
     }
   }
 
   .animate-scroll-right {
+    display: flex;
     animation: scrollRight 30s linear infinite;
+  }
+
+  /* Pause scroll when hovered */
+  .animate-scroll-right:hover {
+    animation-play-state: paused;
   }
 }
