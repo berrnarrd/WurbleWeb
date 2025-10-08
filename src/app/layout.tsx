@@ -11,34 +11,35 @@ export const metadata: Metadata = {
     template: '%s | WurbleWeb',
   },
   description:
-    'Professional web design and development services to elevate your business online. Explore our services today.',
+    'WurbleWeb creates high-performing websites that attract leads, convert clients, and grow your business. Get a custom website starting from $95/month.',
   keywords: [
     'web design',
     'web development',
-    'SEO',
-    'Squarespace websites',
+    'responsive websites',
+    'lead generation websites',
+    'small business websites',
+    'SEO optimized websites',
+    'website agency',
     'WurbleWeb',
-    'responsive design',
-    'web agency',
   ],
-  authors: [{ name: 'WurbleWeb', url: 'https://wurbleweb.com' }],
+  authors: [{ name: 'WurbleWeb', url: 'https://wurbleweb.co' }],
   creator: 'WurbleWeb',
   robots: 'index, follow',
-  metadataBase: new URL('https://wurbleweb.com'),
+  metadataBase: new URL('https://wurbleweb.co'),
 
   // ✅ Open Graph for social sharing
   openGraph: {
     title: 'WurbleWeb | Web Design & Development Agency',
     description:
-      'High-performance websites that convert. Explore our services and grow your business with WurbleWeb.',
-    url: 'https://wurbleweb.com',
+      'High-performing websites that convert visitors into clients. Partner with WurbleWeb to grow your business online.',
+    url: 'https://wurbleweb.co',
     siteName: 'WurbleWeb',
     images: [
       {
-        url: 'https://wurbleweb.com/og-image.jpg', // 🔁 Replace with your actual OG image URL
+        url: 'https://wurbleweb.co/og-image.jpg', // Replace with actual OG image
         width: 1200,
         height: 630,
-        alt: 'WurbleWeb Website Preview',
+        alt: 'WurbleWeb | Web Design & Development',
       },
     ],
     locale: 'en_US',
@@ -50,9 +51,9 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'WurbleWeb | Web Design & Development Agency',
     description:
-      'Professional web design and development services to elevate your business online.',
-    images: ['https://wurbleweb.com/og-image.jpg'], // 🔁 Replace with actual image
-    creator: '@wurbleweb', // 🔁 Replace with your Twitter username
+      'Custom websites that attract leads, convert clients, and help your business grow. Starting at $95/month.',
+    images: ['https://wurbleweb.co/og-image.jpg'], // Replace with actual OG image
+    creator: '@wurbleweb', // Your Twitter handle
   },
 
   // ✅ Favicon

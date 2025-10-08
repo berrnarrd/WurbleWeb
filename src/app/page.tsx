@@ -23,9 +23,11 @@ function Home() {
           />
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm z-10" />
           <div className="relative z-20 max-w-4xl mx-auto">
-            <h1 className="text-5xl font-bold mb-4">Designing Success, One Website at a Time</h1>
+            <h1 className="text-5xl font-bold mb-4 leading-[1.2] sm:leading-[1.25] md:leading-[1.3]">
+              Get More Leads, More Clients, and More Growth
+            </h1>
             <p className="mt-4 text-lg max-w-2xl mx-auto">
-              Transform your business today with a website that connects and converts. Partner with us to create a powerful online presence that drives real results.
+              Grow your business with a website that attracts, engages, and converts. Work with us to create an online presence that delivers real results—from only $95/month.
             </p>
             <a
               href="/pricing"

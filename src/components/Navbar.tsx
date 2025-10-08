@@ -2,22 +2,38 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import logo from '../images/nav-logo.svg'; // your SVG in src/images
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
-
     const toggleMenu = () => setIsOpen(!isOpen);
 
     return (
         <nav className="bg-white shadow-md fixed w-full z-40 top-12">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
-                    <div className="flex-shrink-0">
-                        <Link href="/" className="text-2xl font-bold text-gray-800">
-                            WurbleWeb
+
+                    {/* Brand: logo + wordmark */}
+                    <div className="flex items-center flex-shrink-0">
+                        <Link href="/" className="flex items-center gap-2 sm:gap-3" aria-label="Go to homepage">
+                            {/* Responsive logo sizes; width/height are intrinsic, CSS controls display size */}
+                            <Image
+                                src={logo}
+                                alt="WurbleWeb Logo"
+                                width={40}
+                                height={40}
+                                className="object-contain h-7 w-7 sm:h-8 sm:w-8 md:h-9 md:w-9"
+                                priority
+                            />
+                            <span className="font-bold text-gray-800 text-xl sm:text-2xl">
+                                WurbleWeb
+                            </span>
                         </Link>
                     </div>
-                    <div className="hidden md:flex items-center space-x-4">
+
+                    {/* Desktop menu */}
+                    <div className="hidden md:flex items-center gap-4">
                         <Link href="/" className="text-gray-700 hover:text-gray-900">
                             Home
                         </Link>
@@ -31,11 +47,15 @@ const Navbar = () => {
                             Contact Us
                         </Link>
                     </div>
+
+                    {/* Mobile menu button */}
                     <div className="md:hidden">
                         <button
                             onClick={toggleMenu}
                             type="button"
-                            className="text-gray-800 hover:text-gray-900 focus:outline-none"
+                            aria-label="Toggle menu"
+                            aria-expanded={isOpen}
+                            className="p-2 text-gray-800 hover:text-gray-900 focus:outline-none"
                         >
                             <svg
                                 className="h-6 w-6"
@@ -55,18 +75,25 @@ const Navbar = () => {
                 </div>
             </div>
 
+            {/* Mobile dropdown */}
             {isOpen && (
                 <div className="md:hidden">
                     <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                        <Link href="/" className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
+                        <Link
+                            href="/"
+                            className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md"
+                        >
                             Home
                         </Link>
-                        <Link href="/pricing" className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
+                        <Link
+                            href="/pricing"
+                            className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md"
+                        >
                             Pricing
                         </Link>
                         <Link
                             href="/contact"
-                            className="block px-3 py-2 text-base font-medium text-blue-600 border-2 border-blue-600 hover:bg-blue-600 hover:text-white text-center"
+                            className="block px-3 py-2 text-base font-medium text-blue-600 border-2 border-blue-600 hover:bg-blue-600 hover:text-white text-center rounded-md"
                         >
                             Contact Us
                         </Link>
