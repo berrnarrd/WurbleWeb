@@ -94,7 +94,7 @@ function FaqAccordion() {
     {
       question: 'How does the one-time payment plan work?',
       answer:
-        'Our one-time payment plan is $500. It includes the full design and build of your website with up to 4 pages, professional copywriting, SEO, and one round of revisions. With this option, you fully own your site, while any webflow fees, hosting, domain, and future updates remain your responsibility.',
+        'Our one-time payment plan is $500. It includes the full design and build of your website with up to 4 pages, SEO, copywriting, and one round of revisions. With this option, you fully own your site, while any webflow fees, hosting, domain, and future updates remain your responsibility.',
     },
     {
       question: 'How does the subscription plan work?',
